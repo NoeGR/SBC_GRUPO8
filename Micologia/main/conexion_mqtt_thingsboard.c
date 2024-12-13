@@ -18,6 +18,7 @@
 
 static const char *TAG_MQTT = "MQTT_ThingsBoard";
 
+
 esp_mqtt_client_handle_t cliente_mqtt;  // Cliente MQTT.
 
 static const char *TAG_W = "Wi-Fi";
@@ -79,6 +80,7 @@ static void log_error_if_nonzero(const char *message, int error_code) {
     if (error_code != 0)
         ESP_LOGE(TAG_MQTT, "Last error %s: 0x%x", message, error_code);
 }
+
 
 /*
  * @brief Event handler registered to receive MQTT events
@@ -180,6 +182,8 @@ void mqtt_mandar_datos(float humedad, float turbidez, float temperatura, bool ri
     // Free is intentional, it's client responsibility to free the result of cJSON_Print.
     free(post_data);
 }
+
+
 
 void iniciar_mqtt(void) {
     esp_log_level_set("*", ESP_LOG_INFO);

@@ -1,4 +1,4 @@
-/* * Data converted from G:/4to/SBC/Micologia_temp/Micologia/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from E:/4to/SBC/Micologia_temp/Micologia/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

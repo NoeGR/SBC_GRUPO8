@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "C:/Espressif/frameworks/esp-idf-v5.2.2/components/bootloader/subproject"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/tmp"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src"
-  "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp"
+  "D:/Espressif/frameworks/esp-idf-v5.2.2/components/bootloader/subproject"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/tmp"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src"
+  "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "G:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "E:/4to/SBC/Micologia_temp/Micologia/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

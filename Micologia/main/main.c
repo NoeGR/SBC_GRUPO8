@@ -25,6 +25,7 @@
 #define TURBIDEZ_SENSOR_PIN ADC1_CHANNEL_6  // (GPIO 34).
 #define DHT11_PIN          GPIO_NUM_19  
 #define DHT_TYPE DHT_TYPE_DHT11 
+#define WATER_SENSOR GPIO_NUM_21
 
 #define INTERVALO_TRANSMISION 30 // Intervalo (segundos) entre transmisiones a ThingsBoard.
 
@@ -41,10 +42,28 @@ bool riegoActivo = false;
 bool riegoManual = false;  
 float humedad_umbral = 65.0; 
 int tiempo_espera_manual = 5;
+int nivelAgua=0;
 
 //enum estadoSist {TRANSMITIR, RECIBIR};  // Modos de trabajo del sistema.
 //enum estadoSist modo = TRANSMITIR;
-
+void init_sensor_agua(){
+	gpio_config_t io_conf;
+	io_conf.intr_type = GPIO_INTR_DISABLE;
+	io_conf.mode= GPIO_MODE_INPUT;
+	io_conf.pin_bit_mask = (1ULL << WATER_SENSOR);
+	io_conf.pull_down_en=GPIO_PULLDOWN_DISABLE;
+	io_conf.pull_up_en=GPIO_PULLUP_ENABLE;
+	gpio_config(&io_conf);
+}
+void leer_nivel_agua(){
+	nivelAgua=gpio_get_level(WATER_SENSOR);
+	if(nivelAgua == 0){
+		printf("El recipiente de agua esta vacio\n");
+	}else{
+	printf("El recipiente de agua esta lleno\n");
+	}
+	 
+}
 void configure_adc() {
     adc1_config_width(ADC_WIDTH_BIT_12); 
     adc1_config_channel_atten(HUMEDAD_SENSOR_PIN, ADC_ATTEN_DB_12); 
@@ -166,6 +185,7 @@ void medir_ambiente(void) {
     medir_humedad();
     medir_turbidez();
     medir_temperatura();
+    leer_nivel_agua();
     actualizar_lcd(humedadValor, temperaturaValor, turbidezValor);
     //guardar_ultima_lectura(humedadValor, turbidezValor, temperaturaValor);
     controlar_riego();
@@ -282,12 +302,12 @@ void medir_ambiente(void) {
 	            printf("Datos enviados a ThingsBoard.\n");
 	
 	            // Entrar en Deep Sleep
-	            printf("Preparando para entrar en Deep Sleep por %d segundos...\n", INTERVALO_TRANSMISION);
+	           /* printf("Preparando para entrar en Deep Sleep por %d segundos...\n", INTERVALO_TRANSMISION);
 				https_telegram_sendMessage("Entrando en Deep Sleep...");	           
 	            esp_wifi_stop();  // Asegúrate de apagar el Wi-Fi antes de Deep Sleep
-	            esp_sleep_enable_timer_wakeup(INTERVALO_TRANSMISION * 1000000ULL);
+	            esp_sleep_enable_timer_wakeup(120 * 1000000ULL);
 	            printf("Entrando en Deep Sleep...\n");
-		        esp_deep_sleep_start();  // Inicia Deep Sleep
+		        esp_deep_sleep_start();*/  // Inicia Deep Sleep
 	        }
 	        if(humedadValor >= humedad_umbral && (temperaturaValor >=20 && temperaturaValor <=30)){
 	         // Entrar en Deep Sleep
@@ -376,6 +396,7 @@ void app_main(void) {
     esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_12, ADC_WIDTH_BIT_DEFAULT, 0, &adc1_chars);
     ESP_ERROR_CHECK(adc1_config_width(ADC_WIDTH_BIT_DEFAULT));
     configure_adc();
+    init_sensor_agua();
 
     lcd_init();
     
@@ -387,6 +408,7 @@ void app_main(void) {
     // Iniciar conexiones
     iniciar_mqtt();  
     iniciar_http(); 
+   
 
     // Inicia la tarea principal
     xTaskCreate(principal, "Flujo Principal", 4096, NULL, 9, NULL);

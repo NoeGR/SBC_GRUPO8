@@ -1,4 +1,4 @@
-/* * Data converted from G:/4to/SBC/Micologia_temp/Micologia/main/telegram_certificate.pem
+/* * Data converted from E:/4to/SBC/Micologia_temp/Micologia/main/telegram_certificate.pem
  * (null byte appended)
  */
 .data
