@@ -1,0 +1,77 @@
+[1/5] cmd.exe /C "cd /D E:\4to\SBC\Micologia_temp\Micologia\build\esp-idf\esptool_py && D:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/Espressif/frameworks/esp-idf-v5.2.2/components/partition_table/check_sizes.py --offset 0x8000 partition --type app E:/4to/SBC/Micologia_temp/Micologia/build/partition_table/partition-table.bin E:/4to/SBC/Micologia_temp/Micologia/build/Micoligia.bin"
+Micoligia.bin binary size 0xf8450 bytes. Smallest app partition is 0x100000 bytes. 0x7bb0 bytes (3%) free.
+Warning: The smallest app partition is nearly full (3% free space left)!
+[2/5] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D E:\4to\SBC\Micologia_temp\Micologia\build\bootloader\esp-idf\esptool_py && D:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/Espressif/frameworks/esp-idf-v5.2.2/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 E:/4to/SBC/Micologia_temp/Micologia/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/3] cmd.exe /C "cd /D D:\Espressif\frameworks\esp-idf-v5.2.2\components\esptool_py && D:\Espressif\tools\cmake\3.24.0\bin\cmake.exe -D IDF_PATH=D:/Espressif/frameworks/esp-idf-v5.2.2 -D SERIAL_TOOL=D:/Espressif/python_env/idf5.2_py3.11_env/Scripts/python.exe;;D:/Espressif/frameworks/esp-idf-v5.2.2/components/esptool_py/esptool/esptool.py;--chip;esp32 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=E:/4to/SBC/Micologia_temp/Micologia/buesptool.py --chip esp32 -p COM3 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 Micoligia.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port COM3
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 08:b6:1f:bb:f1:bc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00108fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26720 bytes to 16350...
+Writing at 0x00001000... (100 %)
+Wrote 26720 bytes (16350 compressed) at 0x00001000 in 0.9 seconds (effective 248.8 kbit/s)...
+Hash of data verified.
+Compressed 1016912 bytes to 633442...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001d913... (5 %)
+Writing at 0x00029ad2... (7 %)
+Writing at 0x0002f2a1... (10 %)
+Writing at 0x00034e61... (12 %)
+Writing at 0x00040869... (15 %)
+Writing at 0x0004630b... (17 %)
+Writing at 0x0004bccd... (20 %)
+Writing at 0x00051e6d... (23 %)
+Writing at 0x00057db6... (25 %)
+Writing at 0x0005e4bb... (28 %)
+Writing at 0x000640bd... (30 %)
+Writing at 0x00069b1b... (33 %)
+Writing at 0x0006fa7e... (35 %)
+Writing at 0x00075f70... (38 %)
+Writing at 0x0007bd2a... (41 %)
+Writing at 0x000818a3... (43 %)
+Writing at 0x00086b1f... (46 %)
+Writing at 0x0008be9f... (48 %)
+Writing at 0x000913cc... (51 %)
+Writing at 0x000967bb... (53 %)
+Writing at 0x0009bde6... (56 %)
+Writing at 0x000a1672... (58 %)
+Writing at 0x000a72d7... (61 %)
+Writing at 0x000acdd9... (64 %)
+Writing at 0x000b2b71... (66 %)
+Writing at 0x000b871a... (69 %)
+Writing at 0x000be18c... (71 %)
+Writing at 0x000c398f... (74 %)
+Writing at 0x000c98bf... (76 %)
+Writing at 0x000cf367... (79 %)
+Writing at 0x000d4a06... (82 %)
+Writing at 0x000dbcf3... (84 %)
+Writing at 0x000e72d8... (87 %)
+Writing at 0x000ed280... (89 %)
+Writing at 0x000f315a... (92 %)
+Writing at 0x000f8c0f... (94 %)
+Writing at 0x000ff067... (97 %)
+Writing at 0x0010480e... (100 %)
+Wrote 1016912 bytes (633442 compressed) at 0x00010000 in 14.9 seconds (effective 546.6 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 320.7 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+ild -P D:/Espressif/frameworks/esp-idf-v5.2.2/components/esptool_py/run_serial_tool.cmake"
