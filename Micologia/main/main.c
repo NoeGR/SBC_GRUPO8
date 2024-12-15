@@ -28,7 +28,7 @@
 #define DHT_TYPE DHT_TYPE_DHT11 
 #define WATER_SENSOR GPIO_NUM_21
 
-#define INTERVALO_TRANSMISION 2 // Intervalo (segundos) entre transmisiones a ThingsBoard.
+#define INTERVALO_TRANSMISION 300 // Intervalo (segundos) entre transmisiones a ThingsBoard.
 
 static const char *TAG = "Micologia";
 
