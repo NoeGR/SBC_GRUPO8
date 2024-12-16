@@ -207,7 +207,7 @@ void medir_ambiente(void) {
 	            printf("Preparando para entrar en Deep Sleep por %d segundos...\n", INTERVALO_TRANSMISION);
 				https_telegram_sendMessage("Entrando en Deep Sleep...");	           
 	            esp_wifi_stop();  
-	            esp_sleep_enable_timer_wakeup(120 * 1000000ULL);
+	            esp_sleep_enable_timer_wakeup(INTERVALO_TRANSMISION * 1000000ULL);
 	            printf("Entrando en Deep Sleep...\n");
 		        esp_deep_sleep_start();  
 	        }
@@ -216,7 +216,7 @@ void medir_ambiente(void) {
 	            printf("Preparando para entrar en Deep Sleep por %d segundos...\n", INTERVALO_TRANSMISION);
 	            https_telegram_sendMessage("Entrando en Deep Sleep...");
 	            esp_wifi_stop();  
-	            esp_sleep_enable_timer_wakeup(120 * 1000000ULL);
+	            esp_sleep_enable_timer_wakeup(1800 * 1000000ULL);
 	            printf("Entrando en Deep Sleep...\n");
 		        esp_deep_sleep_start();  
 	        }
